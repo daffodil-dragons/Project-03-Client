@@ -33,24 +33,12 @@ function CharacterCreator() {
         setData({...data, level: event.target.value,});
       } 
     }
-  
+
+
     //function to post to the API
     function submit() {
       fetch("api/form", { method: "POST", body: JSON.stringify(data) });
     }
-  
-    //map function
-    // const playerCharacter = data.map((player) => {
-    //   return (
-    //     <div>
-    //       <h1>{player.name}</h1>
-    //       <h2>{player.race}</h2>
-    //       <h3>{player.class}</h3>
-    //       <h4>{player.background}</h4>
-    //     </div>
-    //   );
-    // });
-  
   
    /*****************************
    *        MAIN RETURN         *
@@ -79,13 +67,12 @@ function CharacterCreator() {
       )}
 
       {/*Content Here */}
-      {page === 1 && <OnboardingOne data={data.name} update={updateData} />}
-      {page === 2 && <OnboardingTwo data={data.race} update={updateData} />}
-      {page === 3 && <OnboardingThree data={data.class} update={updateData} />}
+      {page === 1 && <OnboardingOne data={data} update={updateData}/>}
+      {page === 2 && <OnboardingTwo data={data} update={updateData} />}
+      {page === 3 && <OnboardingThree data={data} update={updateData} />}
       {page === 4 && (
-        <OnboardingFour data={data.background} update={updateData} />
+        <OnboardingFour data={data} update={updateData} />
       )}
-      {/* <div>{playerCharacter}</div> */}
     </div>
   );
 }
@@ -97,45 +84,48 @@ export default CharacterCreator;
  *****************************/
 
 //component for name
-function OnboardingOne({ data, updateData }) {
+function OnboardingOne({data, update}) {
   return (
     <div>
       <form>
         Please enter your character's name:
-        <input type="text" id="name" value={data.name} onChange={updateData}/>
+        <input type="text" id="name" value={data.name} onChange={update}/>
       </form>
     </div>
   );
 }
+
+
+
 //component for race
-function OnboardingTwo({ data, updateData }) {
+function OnboardingTwo({ data, update }) {
   return (
     <div>
       <form>
         Please enter your character's race:
-        <input type="text" id="demographic" value={data.demographic} onChange={updateData} />
+        <input type="text" id="demographic" value={data.demographic} onChange={update} />
       </form>
     </div>
   );
 }
 //component for class
-function OnboardingThree({ data, updateData }) {
+function OnboardingThree({ data, update }) {
   return (
     <div>
       <form>
         Please enter your character's class:
-        <input type="text" id="class" value={data.class} onChange={updateData}/>
+        <input type="text" id="class" value={data.class} onChange={update}/>
       </form>
     </div>
   );
 }
 //component for background
-function OnboardingFour({ data, updateData }) {
+function OnboardingFour({ data, update }) {
   return (
     <div>
       <form>
         Please enter your character's level:
-        <input type="number" id="level" value={data.level} onChange={updateData}/>
+        <input type="number" id="level" value={data.level} onChange={update}/>
       </form>
     </div>
   );
