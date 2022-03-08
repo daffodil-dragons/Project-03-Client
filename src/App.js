@@ -2,7 +2,6 @@
 import React  from "react";
 import {Routes, Link, Route} from 'react-router-dom'
 import "./App.css";
-import CharacterDisplay from "./CharacterDisplay/CharacterDisplay";
 
 //components import
 import AboutUs from './components/AboutUs/AboutUs'
