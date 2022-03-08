@@ -30,7 +30,7 @@ const CharacterDisplay = () => {
             <div>Strength</div>
             <div>{charData.stats.strength}</div>
             <div className="modifier">
-                {charData.stats.strength >= 10 ? "+" + Math.floor((charData.stats.strength - 10) / 2) : -Math.floor((charData.stats.strength - 10) / 2) }
+                {charData.stats.strength >= 10 ? "+" + Math.floor((charData.stats.strength - 10) / 2) : Math.floor((charData.stats.strength - 10) / 2) }
             </div>
           </div>
           <div className="border ability">
@@ -51,7 +51,7 @@ const CharacterDisplay = () => {
             <div>Intelligence</div>
             <div>{charData.stats.intelligence}</div>
             <div className="modifier">
-                {charData.stats.intelligence >= 10 ? "+" + Math.floor((charData.stats.intellgience - 10) / 2) : Math.floor((charData.stats.intelligence - 10) / 2) }
+                {charData.stats.intelligence >= 10 ? "+" + Math.floor((charData.stats.intelligence - 10) / 2) : Math.floor((charData.stats.intelligence - 10) / 2) }
             </div>
           </div>
           <div className="border ability">

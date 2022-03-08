@@ -5,10 +5,10 @@ import { useState } from "react";
 function CharacterCreator() {
     const [page, setpage] = useState(1);
     const [data, setData] = useState({
-      name: " ",
-      demographic: " ",
-      class: " ",
-      level: " ",
+      name: "",
+      demographic: "",
+      class: "",
+      level: "",
       stats: {
         hp: 0,
         strength: 0,
