@@ -71,7 +71,24 @@ function CharacterUpdate() {
         .then((data) => setData(data.Character))
         .catch((e) => console.log(e))
     }
+
+    function deleteChar(){
+        window.alert("You deleted your character!");
+        fetch("http://localhost:4000/character/delete/Stronk",
+        { method: "DELETE"})
+        .catch((e) => console.log(e))
+    }
   
+    // function verify() {
+    //     window.alert("Please confirm your deletion");
+    //     if (true) {
+    //          deleteChar()
+    //     } else {
+    //          console.log('aborted');
+    //     }
+    // }
+
+
    /*****************************
    *        MAIN RETURN         *
    *****************************/
@@ -106,6 +123,11 @@ function CharacterUpdate() {
       {page === 3 && <OnboardingThree data={data} update={updateData} />}
       {page === 4 && <OnboardingFour data={data} update={updateData} />}
       {page === 5 && <OnboardingFive data={data} update={updateData} />}
+
+        <div>
+            <h1>Delete Character</h1>
+            <button onClick={deleteChar}>Delete</button>
+        </div>
     </div>
   );
 }
