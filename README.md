@@ -79,7 +79,9 @@ As a user I want to use an app to create a D&D character sheet, so that I can ea
 | Long/short rest button |    M     |      2hrs      |             |
 | Race info. pop up      |    L     |      2hrs      |             |
 | Class info. pop up     |    L     |      2hrs      |             |
-| Total                  |          |     22hrs      |             |
+| Class info. pop up     |    L     |      2hrs      |             |
+| Dice roll button       |    M     |      1hrs      |             |
+| Total                  |          |     23hrs      |             |
 
 ## Additional Libraries
 
