@@ -2,7 +2,7 @@ import React  from "react";
 import { useState } from "react";
 
 
-function CharacterCreator() {
+function CharacterUpdate() {
     const [page, setpage] = useState(1);
     const [data, setData] = useState({
       name: "",
@@ -60,9 +60,16 @@ function CharacterCreator() {
 
     //function to post to the API
     function submit() {
-      fetch("http://localhost:4000/character/create", 
-      { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(data) })
+      fetch("http://localhost:4000/character/update/Stronk", 
+      { method: "PUT", headers: {"Content-Type": "application/json"}, body: JSON.stringify(data) })
       .catch((e) => console.log(e));
+    }
+
+    function findChar() {
+        fetch("http://localhost:4000/character/find/Stronk")
+        .then((res) => res.json())
+        .then((data) => setData(data.Character))
+        .catch((e) => console.log(e))
     }
   
    /*****************************
@@ -70,6 +77,8 @@ function CharacterCreator() {
    *****************************/
   return (
     <div className="App">
+        <h1>Update Character</h1>
+        <button onClick={findChar}>Find Stronk</button>
       {/* Progress Bar here */}
       <div>
         <progress max="5" value={page} />
@@ -101,7 +110,7 @@ function CharacterCreator() {
   );
 }
 
-export default CharacterCreator;
+export default CharacterUpdate;
 
 /*****************************
  *        COMPONENTS          *

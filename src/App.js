@@ -7,6 +7,7 @@ import "./App.css";
 import AboutUs from './components/AboutUs/AboutUs'
 import CharacterDisplay from './components/CharacterDisplay/CharacterDisplay'
 import CharacterCreator from './components/CharacterCreator/ChracterCreator'
+import CharacterUpdate from './components/CharacterUpdate/CharacterUpdate'
 
 function App() {
     return (
@@ -15,11 +16,13 @@ function App() {
             <Link to='/CharacterCreator'> <button>Character Creator</button> </Link>
             <Link to='/CharacterDisplay'> <button>View All Characters</button> </Link>
             <Link to='/AboutUs'><button>About Us!</button></Link>
+            <Link to='/CharacterUpdate'><button>Update Character</button> </Link>
           </nav>
         <main>
           <Routes>
             <Route path='/CharacterCreator' element={<CharacterCreator />} />,
             <Route path='/CharacterDisplay' element={<CharacterDisplay />} />,
+            <Route path='/CharacterUpdate' element={<CharacterUpdate />} />,
             <Route path='/AboutUs' element={<AboutUs />} />
           </Routes>
         </main>

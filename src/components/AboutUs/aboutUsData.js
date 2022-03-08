@@ -1,21 +1,18 @@
 let aboutUsData = [
     {
         name: "Daniel Ribuffo", 
-        email: "email",
         github: "github",
         linkedIn: "linkedIn"
     },
     {
         name: "Austin Cesear", 
-        email: "email",
         github: "github",
         linkedIn: "linkedIn"
     },
     {
         name: "Mitch Bennett", 
-        email: "email",
-        github: "github",
-        linkedIn: "linkedIn"
+        github: "https://github.com/mrb5691",
+        linkedIn: "https://www.linkedin.com/in/mitchell-r-bennett/"
     }
 ]
 
