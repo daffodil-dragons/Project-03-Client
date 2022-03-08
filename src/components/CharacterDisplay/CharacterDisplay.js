@@ -5,7 +5,7 @@ const CharacterDisplay = () => {
   const [charData, setCharData] = useState({});
 
   function getCharData() {
-    fetch("http://localhost:4000/character/find/Austin")
+    fetch("http://localhost:4000/character/find/Stronk")
       .then((res) => res.json())
       .then((data) => setCharData(data.Character))
       .catch((e) => console.log(e));
@@ -23,48 +23,49 @@ const CharacterDisplay = () => {
           <div className="char-info-class">Class: {charData.class}</div>
           <div className="char-info-level">Level: {charData.level}</div>
           <div className="char-info-race">Race: {charData.demographic}</div>
+          <div className="char-info-hp">HP: {charData.stats.hp}</div>
         </div>
         <div className="border ability-score">
           <div className="border ability">
             <div>Strength</div>
             <div>{charData.stats.strength}</div>
             <div className="modifier">
-              +{Math.floor((charData.stats.strength - 10) / 2)}
+                {charData.stats.strength >= 10 ? "+" + Math.floor((charData.stats.strength - 10) / 2) : -Math.floor((charData.stats.strength - 10) / 2) }
             </div>
           </div>
           <div className="border ability">
             <div>Dexterity</div>
             <div>{charData.stats.dexterity}</div>
             <div className="modifier">
-              +{Math.floor((charData.stats.dexterity - 10) / 2)}
+            {charData.stats.dexterity >= 10 ? "+" + Math.floor((charData.stats.dexterity - 10) / 2) : Math.floor((charData.stats.dexterity - 10) / 2) }
             </div>
           </div>
           <div className="border ability">
             <div>Constitution</div>
             <div>{charData.stats.constitution}</div>
             <div className="modifier">
-              +{Math.floor((charData.stats.constitution - 10) / 2)}
+            {charData.stats.constitution >= 10 ? "+" + Math.floor((charData.stats.constitution - 10) / 2) : Math.floor((charData.stats.constitution - 10) / 2) }
             </div>
           </div>
           <div className="border ability">
             <div>Intelligence</div>
             <div>{charData.stats.intelligence}</div>
             <div className="modifier">
-              +{Math.floor((charData.stats.intelligence - 10) / 2)}
+                {charData.stats.intelligence >= 10 ? "+" + Math.floor((charData.stats.intellgience - 10) / 2) : Math.floor((charData.stats.intelligence - 10) / 2) }
             </div>
           </div>
           <div className="border ability">
             <div>Wisdom</div>
             <div>{charData.stats.wisdom}</div>
             <div className="modifier">
-              +{Math.floor((charData.stats.wisdom - 10) / 2)}
+                {charData.stats.wisdom >= 10 ? "+" + Math.floor((charData.stats.wisdom - 10) / 2) : Math.floor((charData.stats.wisdom - 10) / 2) }
             </div>
           </div>
           <div className="border ability">
             <div>Charisma</div>
             <div>{charData.stats.charisma}</div>
             <div className="modifier">
-              +{Math.floor((charData.stats.charisma - 10) / 2)}
+                {charData.stats.charisma >= 10 ? "+" + Math.floor((charData.stats.charisma - 10) / 2) : Math.floor((charData.stats.charisma - 10) / 2) }
             </div>
           </div>
         </div>
