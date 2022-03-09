@@ -1,8 +1,8 @@
 let aboutUsData = [
     {
         name: "Daniel Ribuffo", 
-        github: "github",
-        linkedIn: "linkedIn"
+        github: "https://github.com/dribuffo",
+        linkedIn: "https://www.linkedin.com/in/danielribuffo"
     },
     {
         name: "Austin Cesear", 

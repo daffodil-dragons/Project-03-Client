@@ -7,9 +7,8 @@ function AboutUs() {
     let teammates = aboutUsData.map((person, key) => {
         return (
             <div className="member">
-                {person.name}
-                {person.email}
-                {person.github}
+                <h1>{person.name}</h1>
+                <div>{person.github}</div>
                 {person.linkedIn}
             </div>
         )
