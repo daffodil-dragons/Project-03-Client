@@ -1,8 +1,39 @@
+/* .wrapper {
+  background-image: url("https://wallpapercave.com/wp/wp4110703.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+} */
+
+h1 {
+  text-align: center;
+  /* color: white; */
+}
+
+.get-char-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-all {
+  margin-bottom: 5px;
+}
+
+.btn-sm {
+  margin-right: 5px;
+}
+
 .border {
   border: 1px solid black;
 }
 
 .main-container {
+  background-color: white;
   margin: 5px;
   padding: 10px;
   display: grid;

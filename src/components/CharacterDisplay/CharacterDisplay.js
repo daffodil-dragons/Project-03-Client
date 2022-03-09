@@ -22,18 +22,18 @@ const CharacterDisplay = () => {
   let charDataDisplay;
   if (charData.stats) {
     charDataDisplay = (
-      <div className="border main-container">
-        <div className="border name">
+      <div className="border border-2 border-dark main-container">
+        <div className="border border-secondary name">
           <h3>{charData.name}</h3>
           <div>Character Name</div>
         </div>
-        <div className="border char-info">
+        <div className="border border-secondary char-info">
           <div className="char-info-class">Class: {charData.class}</div>
           <div className="char-info-level">Level: {charData.level}</div>
           <div className="char-info-race">Race: {charData.demographic}</div>
           <div className="char-info-hp">HP: {charData.stats.hp}</div>
         </div>
-        <div className="border ability-score">
+        <div className="border border-secondary ability-score">
           <div className="border ability">
             <div>Strength</div>
             <h4>
@@ -97,7 +97,11 @@ const CharacterDisplay = () => {
   if (allChar.length) {
     allCharDisplay = allChar.map((char, index) => {
       return (
-        <button key={index} onClick={() => getCharData(char.name)}>
+        <button
+          className="btn btn-secondary btn-sm"
+          key={index}
+          onClick={() => getCharData(char.name)}
+        >
           {char.name}, lvl. {char.level}
         </button>
       );
@@ -105,10 +109,16 @@ const CharacterDisplay = () => {
   }
 
   return (
-    <div>
+    <div className="wrapper">
       <h1>Character Display Page</h1>
-      <button onClick={getAllChar}>Get All Characters</button>
-      <div>{allCharDisplay}</div>
+      <div className="get-char-container">
+        <div className="get-all">
+          <button className="btn btn-primary" onClick={getAllChar}>
+            Get All Characters
+          </button>
+        </div>
+        <div className="single-char">{allCharDisplay}</div>
+      </div>
       {charDataDisplay}
     </div>
   );
