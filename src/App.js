@@ -20,13 +20,13 @@ function App() {
             <Link to='/CharacterUpdate'><button>Update Character</button> </Link>
             <Link to='/Spells'><button>Spells</button></Link>
           </nav> */}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            DnD Character Creator
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -34,25 +34,24 @@ function App() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                {/* <a class="nav-link" aria-current="page" href="#">
-                  Home
-                </a> */}
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
                 <Link className="nav-link" to='/CharacterCreator'>Character Creator</Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Features
-                </a>
+              <li className="nav-item">
+                <Link className="nav-link" to='/CharacterDisplay'>View All Characters</Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Pricing
-                </a>
+              <li className="nav-item">
+                <Link className="nav-link" to='/CharacterUpdate'>Update Character</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to='/Spells'>Spells</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to='/AboutUs'>About Us!</Link>
               </li>
             </ul>
           </div>
