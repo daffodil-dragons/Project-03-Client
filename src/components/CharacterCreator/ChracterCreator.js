@@ -110,9 +110,8 @@ function CharacterCreator() {
   return (
     <div className="cc">
       {/* Progress Bar here */}
-      let step = {page};
       <div className="progress">
-        <div className="progress-bar bg-info" role="progressbar" width="1/5" aria-valuemin="0" aria-valuemax="5"></div>
+        <div className="progress-bar bg-info" role="progressbar" style={{width: (`${page}` * 20) + '%'}} aria-valuenow={`${page}`} aria-valuemin="0" aria-valuemax="5"></div>
       </div> 
       {/* <div className="progress">
         <progress max="5" value={page} />
