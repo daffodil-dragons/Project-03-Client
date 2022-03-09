@@ -156,7 +156,7 @@ function CharacterUpdate() {
    *****************************/
   return (
     <div className="App">
-      <div><h1>Update Character</h1>
+      <div className="header"><h1>Update Character</h1>
       <form>
         <input
           type="text"
@@ -184,9 +184,13 @@ function CharacterUpdate() {
       {/*Content Here */}
       {/* {page === 1 && <OnboardingOne data={data} update={updateData} />} */}
       {/* {page === 2 && <OnboardingTwo data={data} update={updateData} />} */}
-      {<OnboardingThree data={data} update={updateData} />}
-      {<OnboardingFour data={data} update={updateData} />}
+      <div className="demoStats">
+        {<OnboardingThree data={data} update={updateData} />}
+        {<OnboardingFour data={data} update={updateData} />}
+      </div>
+      <div className="statStats">
       {<OnboardingFive data={data} update={updateData} />}
+      </div>
     </div>
       </div>
 
@@ -259,7 +263,8 @@ function OnboardingFive({ data, update }) {
   return (
     <div>
       <form>
-        Please enter your character's stats:
+        <div className="title">Please enter your character's stats:</div>
+    <div className="statNames">
         <div className="hp">
           HP:{" "}
           <input
@@ -323,6 +328,7 @@ function OnboardingFive({ data, update }) {
             onChange={update}
           />
         </div>
+    </div>
       </form>
     </div>
   );
