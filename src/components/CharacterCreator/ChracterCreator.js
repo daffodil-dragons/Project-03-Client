@@ -110,12 +110,9 @@ function CharacterCreator() {
   return (
     <div className="cc">
       {/* Progress Bar here */}
-      <div className="progress">
+      <div className="progress" style={{height: 50}}>
         <div className="progress-bar bg-info" role="progressbar" style={{width: (`${page}` * 20) + '%'}} aria-valuenow={`${page}`} aria-valuemin="0" aria-valuemax="5"></div>
       </div> 
-      {/* <div className="progress">
-        <progress max="5" value={page} />
-      </div> */}
 
       {/*Buttons here*/}
       {page !== 1 && <button id="back" className="btn btn-primary" onClick={goBackPage}>Back</button>}
