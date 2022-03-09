@@ -85,7 +85,26 @@ function CharacterUpdate() {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    }).catch((e) => console.log(e));
+    })
+      .then(() =>
+        setData({
+          name: "",
+          demographic: "",
+          class: "",
+          level: "",
+          stats: {
+            hp: 0,
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0,
+          },
+        })
+      )
+      .then(() => setSearchName(""))
+      .catch((e) => console.log(e));
   }
 
   function findChar(event) {
@@ -97,10 +116,29 @@ function CharacterUpdate() {
   }
 
   function deleteChar() {
-    window.alert("You deleted your character!");
-    fetch("http://localhost:4000/character/delete/Stronk", {
+    window.alert(`You deleted the character: ${searchName}!`);
+    fetch("http://localhost:4000/character/delete/" + searchName, {
       method: "DELETE",
-    }).catch((e) => console.log(e));
+    })
+      .then(() =>
+        setData({
+          name: "",
+          demographic: "",
+          class: "",
+          level: "",
+          stats: {
+            hp: 0,
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0,
+          },
+        })
+      )
+      .then(() => setSearchName(""))
+      .catch((e) => console.log(e));
   }
 
   // function verify() {
@@ -119,7 +157,12 @@ function CharacterUpdate() {
     <div className="App">
       <h1>Update Character</h1>
       <form>
-        <input type="text" placeholder="name" value={searchName} onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="name"
+          value={searchName}
+          onChange={handleChange}
+        />
         <button onClick={findChar}>Find Character By Name</button>
       </form>
 
