@@ -36,57 +36,57 @@ const CharacterDisplay = () => {
         <div className="border ability-score">
           <div className="border ability">
             <div>Strength</div>
-            <div>{charData.stats.strength}</div>
-            <div className="modifier">
+            <h4>
               {charData.stats.strength >= 10
                 ? "+" + Math.floor((charData.stats.strength - 10) / 2)
                 : Math.floor((charData.stats.strength - 10) / 2)}
-            </div>
+            </h4>
+            <div className="modifier">{charData.stats.strength}</div>
           </div>
           <div className="border ability">
             <div>Dexterity</div>
-            <div>{charData.stats.dexterity}</div>
-            <div className="modifier">
+            <h4>
               {charData.stats.dexterity >= 10
                 ? "+" + Math.floor((charData.stats.dexterity - 10) / 2)
                 : Math.floor((charData.stats.dexterity - 10) / 2)}
-            </div>
+            </h4>
+            <div className="modifier">{charData.stats.dexterity}</div>
           </div>
           <div className="border ability">
             <div>Constitution</div>
-            <div>{charData.stats.constitution}</div>
-            <div className="modifier">
+            <h4>
               {charData.stats.constitution >= 10
                 ? "+" + Math.floor((charData.stats.constitution - 10) / 2)
                 : Math.floor((charData.stats.constitution - 10) / 2)}
-            </div>
+            </h4>
+            <div className="modifier">{charData.stats.constitution}</div>
           </div>
           <div className="border ability">
             <div>Intelligence</div>
-            <div>{charData.stats.intelligence}</div>
-            <div className="modifier">
+            <h4>
               {charData.stats.intelligence >= 10
                 ? "+" + Math.floor((charData.stats.intelligence - 10) / 2)
                 : Math.floor((charData.stats.intelligence - 10) / 2)}
-            </div>
+            </h4>
+            <div className="modifier">{charData.stats.intelligence}</div>
           </div>
           <div className="border ability">
             <div>Wisdom</div>
-            <div>{charData.stats.wisdom}</div>
-            <div className="modifier">
+            <h4>
               {charData.stats.wisdom >= 10
                 ? "+" + Math.floor((charData.stats.wisdom - 10) / 2)
                 : Math.floor((charData.stats.wisdom - 10) / 2)}
-            </div>
+            </h4>
+            <div className="modifier">{charData.stats.wisdom}</div>
           </div>
           <div className="border ability">
             <div>Charisma</div>
-            <div>{charData.stats.charisma}</div>
-            <div className="modifier">
+            <h4>
               {charData.stats.charisma >= 10
                 ? "+" + Math.floor((charData.stats.charisma - 10) / 2)
                 : Math.floor((charData.stats.charisma - 10) / 2)}
-            </div>
+            </h4>
+            <div className="modifier">{charData.stats.charisma}</div>
           </div>
         </div>
       </div>
