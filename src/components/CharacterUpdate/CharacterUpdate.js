@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './CharacterUpdate.css';
 
 function CharacterUpdate() {
   const [page, setpage] = useState(1);
@@ -155,7 +156,7 @@ function CharacterUpdate() {
    *****************************/
   return (
     <div className="App">
-      <h1>Update Character</h1>
+      <div className="header"><h1>Update Character</h1>
       <form>
         <input
           type="text"
@@ -165,7 +166,7 @@ function CharacterUpdate() {
         />
         <button onClick={findChar}>Find Character By Name</button>
       </form>
-
+      </div>
       {/* Progress Bar here */}
       {/* <div>
         <progress max="5" value={page} />
@@ -173,20 +174,27 @@ function CharacterUpdate() {
 
       {/* {page !== 1 && <button onClick={goBackPage}>Back</button>}
       {page !== 5 && <button onClick={goNextPage}>Next</button>} */}
-      {
+      <div className="statUpdates">
+          <div className="sButton">{
         <button type="submit" onClick={submit}>
           Submit
         </button>
-      }
-
+      }</div>
+    <div className="statContainer">
       {/*Content Here */}
       {/* {page === 1 && <OnboardingOne data={data} update={updateData} />} */}
       {/* {page === 2 && <OnboardingTwo data={data} update={updateData} />} */}
-      {<OnboardingThree data={data} update={updateData} />}
-      {<OnboardingFour data={data} update={updateData} />}
+      <div className="demoStats">
+        {<OnboardingThree data={data} update={updateData} />}
+        {<OnboardingFour data={data} update={updateData} />}
+      </div>
+      <div className="statStats">
       {<OnboardingFive data={data} update={updateData} />}
+      </div>
+    </div>
+      </div>
 
-      <div>
+      <div className="delete">
         <h1>Delete Character</h1>
         <button onClick={deleteChar}>Delete</button>
       </div>
@@ -255,7 +263,8 @@ function OnboardingFive({ data, update }) {
   return (
     <div>
       <form>
-        Please enter your character's stats:
+        <div className="title">Please enter your character's stats:</div>
+    <div className="statNames">
         <div className="hp">
           HP:{" "}
           <input
@@ -319,6 +328,7 @@ function OnboardingFive({ data, update }) {
             onChange={update}
           />
         </div>
+    </div>
       </form>
     </div>
   );

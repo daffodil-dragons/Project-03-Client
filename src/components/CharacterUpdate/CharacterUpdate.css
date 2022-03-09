@@ -1,0 +1,76 @@
+h1{
+    text-align: center;
+}
+.App{
+    display: grid;
+    grid-template-rows: 1fr, 2fr, 1fr;
+}
+.App div{
+    margin-bottom: 20px;
+}
+.statUpdates{
+    display: grid;
+    grid-template-columns: 3fr, 1fr;
+}
+.statContainer{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    height: 100%;
+}
+.sButton{
+    grid-column: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    grid-row: 1/2;
+}
+.delete button{
+    display: block;
+    margin: auto;
+}
+@media only screen and (min-width: 1024px){
+    .App .header{
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .App .statUpdates{
+        margin-bottom: 80px;
+    }
+    .statUpdates{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr, 1fr;
+    }
+    .sButton{
+        grid-column: 1/2;
+        grid-row:2/3;
+    }
+    .statContainer{
+        display: grid;
+        grid-template-rows: 1fr, 3fr;
+    }
+    .demoStats{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        
+    }
+    .statStats{
+        display: block;
+        margin: auto;
+    }
+    .statStats form .title{
+        text-align: center;
+    }
+    .statStats form .statNames{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .statStats form div{
+        margin-right: 10px;
+    }
+}
