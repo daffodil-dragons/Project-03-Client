@@ -1,0 +1,208 @@
+/* MOBILE DISPLAY */
+@media (max-width: 768px){
+    :root {
+        background-color: #30302B;
+    }
+    
+    .cc {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 100px 100px 100px 100px 100px;
+        background-color: #30302B;
+    }
+    
+    .progress {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+    }
+    
+    #main {
+        background-color: grey;
+        grid-column: 1;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        border-style: solid;
+        font-size: 20px;
+    }
+    
+    #next {
+        grid-column: 1;
+        grid-row: 5;
+        margin-left: 10px;
+        justify-self: end;
+        margin-top: 10px;
+        padding-left: 50px;
+        padding-right: 50px;
+        border-style: solid;
+    }
+    
+    #submit {
+        grid-column: 1;
+        grid-row: 6;
+        margin: 20px;
+        border-style: solid;
+    }
+    
+    #back {
+        grid-column: 1;
+        grid-row-start: 5;
+        margin-right: 5px;
+        justify-self: start;
+        margin-top: 10px;
+        padding-left: 50px;
+        padding-right: 50px;
+        border-style: solid;
+    }
+    
+    .form {
+        text-align: center;
+        color: white;
+        height: 300px;
+        font-size: 25px;
+        overflow: scroll;
+        overflow-x:hidden;
+        border-style: solid;
+    }
+    
+    .hp, .strength, .dexterity, .constitution, .intelligence, .wisdom, .charisma {
+        text-align: center;
+    }    
+}
+
+/* TABLET DISPLAY */
+@media (min-width: 768px){
+    :root {
+        background-color: #30302B;
+    }
+    
+    .cc {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 100px 100px 100px 100px 100px;
+        background-color: #30302B;
+    }
+    
+    .progress {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+    }
+    
+    #main {
+        background-color: grey;
+        grid-column: 2;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        border-style: groove;
+        box-shadow: 5px 5px grey;
+        font-size: 20px;
+    }
+    
+    #next {
+        grid-column: 3;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        margin-left: 10px;
+        justify-self: center;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    
+    #submit {
+        grid-column: 2;
+        grid-row: 5;
+        margin-top: 10px;
+    }
+    
+    #back {
+        grid-column: 1;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        margin-right: 5px;
+        justify-self: center;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    
+    .form {
+        text-align: center;
+        color: white;
+        height: 300px;
+        font-size: 25px;
+        overflow: scroll;
+        overflow-x:hidden;
+    }
+    
+    .hp, .strength, .dexterity, .constitution, .intelligence, .wisdom, .charisma {
+        text-align: left;
+    }    
+}
+
+/* DESKTOP DISPLAY */
+@media (min-width: 992px){
+    :root {
+        background-color: #30302B;
+    }
+    
+    .cc {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 100px 100px 100px 100px;
+        background-image: url('https://wallpapercave.com/wp/wp4110703.jpg');
+        background-color: #cccccc;
+        height: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+    
+    .progress {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+    }
+    
+    #main {
+        background-color: grey;
+        grid-column: 2;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        border-style: groove;
+        box-shadow: 5px 5px grey;
+        font-size: 20px;
+    }
+    
+    #next {
+        grid-column: 3;
+        grid-row: 2;
+        justify-self: start;
+        align-self: center;
+        margin-left: 10px;
+    }
+    
+    #submit {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: end;
+    }
+    
+    #back {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: end;
+        align-self: center;
+        margin-right: 5px;
+    }
+    
+    .form {
+        text-align: center;
+        color: white;
+        font-size: 20px;
+    }
+    
+    .hp, .strength, .dexterity, .constitution, .intelligence, .wisdom, .charisma {
+        text-align: right;
+    }    
+}

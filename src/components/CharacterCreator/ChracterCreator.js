@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "./CharacterCreator.css";
 
 function CharacterCreator() {
   const [page, setpage] = useState(1);
@@ -107,26 +108,29 @@ function CharacterCreator() {
    *        MAIN RETURN         *
    *****************************/
   return (
-    <div className="App">
+    <div className="cc">
       {/* Progress Bar here */}
-      <div>
-        <progress max="5" value={page} />
-      </div>
+      <div className="progress" style={{height: 50}}>
+        <div className="progress-bar bg-info" role="progressbar" style={{width: (`${page}` * 20) + '%'}} aria-valuenow={`${page}`} aria-valuemin="0" aria-valuemax="5"></div>
+      </div> 
 
-      {page !== 1 && <button onClick={goBackPage}>Back</button>}
-      {page !== 5 && <button onClick={goNextPage}>Next</button>}
+      {/*Buttons here*/}
+      {page !== 1 && <button id="back" className="btn btn-primary" onClick={goBackPage}>Back</button>}
+      {page !== 5 && <button id="next" className="btn btn-primary" onClick={goNextPage}>Next</button>}
       {page === 5 && (
-        <button type="submit" onClick={submit}>
+        <button id="submit" type="submit" className="btn btn-success" onClick={submit}>
           Submit
         </button>
       )}
 
       {/*Content Here */}
-      {page === 1 && <OnboardingOne data={data} update={updateData} />}
-      {page === 2 && <OnboardingTwo data={data} update={updateData} />}
-      {page === 3 && <OnboardingThree data={data} update={updateData} />}
-      {page === 4 && <OnboardingFour data={data} update={updateData} />}
-      {page === 5 && <OnboardingFive data={data} update={updateData} />}
+      <section id="main">
+        {page === 1 && <OnboardingOne data={data} update={updateData} />}
+        {page === 2 && <OnboardingTwo data={data} update={updateData} />}
+        {page === 3 && <OnboardingThree data={data} update={updateData} />}
+        {page === 4 && <OnboardingFour data={data} update={updateData} />}
+        {page === 5 && <OnboardingFive data={data} update={updateData} />}
+      </section>
     </div>
   );
 }
@@ -141,19 +145,18 @@ export default CharacterCreator;
 function OnboardingOne({ data, update }) {
   return (
     <div>
-      <form>
+      <form className="form">
         Please enter your character's name:
         <input type="text" id="name" value={data.name} onChange={update} />
       </form>
     </div>
   );
 }
-
 //component for race
 function OnboardingTwo({ data, update }) {
   return (
     <div>
-      <form>
+      <form className="form">
         Please enter your character's race:
         <input
           type="text"
@@ -169,7 +172,7 @@ function OnboardingTwo({ data, update }) {
 function OnboardingThree({ data, update }) {
   return (
     <div>
-      <form>
+      <form className="form">
         Please enter your character's class:
         <input type="text" id="class" value={data.class} onChange={update} />
       </form>
@@ -180,7 +183,7 @@ function OnboardingThree({ data, update }) {
 function OnboardingFour({ data, update }) {
   return (
     <div>
-      <form>
+      <form className="form">
         Please enter your character's level:
         <input type="number" id="level" value={data.level} onChange={update} />
       </form>
@@ -191,7 +194,7 @@ function OnboardingFour({ data, update }) {
 function OnboardingFive({ data, update }) {
   return (
     <div>
-      <form>
+      <form className="form">
         Please enter your character's stats:
         <div className="hp">
           HP:{" "}
