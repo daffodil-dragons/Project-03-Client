@@ -1,0 +1,63 @@
+:root {
+    background-color: #30302B;
+}
+
+.cc {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 100px 100px 100px;
+    background-image: url('https://wallpapercave.com/wp/wp4110703.jpg');
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.progress {
+    grid-column: 2;
+    grid-row: 1;
+    /* justify-self: center; */
+    align-self: center;
+}
+
+#main {
+    background-color: grey;
+    grid-column: 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    border-style: groove;
+    box-shadow: 5px 5px grey;
+}
+
+#next {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+    align-self: center;
+    margin-left: 10px;
+}
+
+#submit {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+}
+
+#back {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.form {
+    text-align: center;
+    color: white;
+}
+
+.hp, .strength, .dexterity, .constitution, .intelligence, .wisdom, .charisma {
+    text-align: right;
+}

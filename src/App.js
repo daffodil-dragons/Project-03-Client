@@ -13,13 +13,6 @@ import Spells from "./components/Spells/Spells";
 function App() {
   return (
     <div className="homepage">
-      {/* <nav>
-            <Link to='/CharacterCreator'> <button>Character Creator</button> </Link>
-            <Link to='/CharacterDisplay'> <button>View All Characters</button> </Link>
-            <Link to='/AboutUs'><button>About Us!</button></Link>
-            <Link to='/CharacterUpdate'><button>Update Character</button> </Link>
-            <Link to='/Spells'><button>Spells</button></Link>
-          </nav> */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
