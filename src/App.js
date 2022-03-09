@@ -8,6 +8,7 @@ import AboutUs from './components/AboutUs/AboutUs'
 import CharacterDisplay from './components/CharacterDisplay/CharacterDisplay'
 import CharacterCreator from './components/CharacterCreator/ChracterCreator'
 import CharacterUpdate from './components/CharacterUpdate/CharacterUpdate'
+import Spells from "./components/Spells/Spells";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             <Link to='/CharacterDisplay'> <button>View All Characters</button> </Link>
             <Link to='/AboutUs'><button>About Us!</button></Link>
             <Link to='/CharacterUpdate'><button>Update Character</button> </Link>
+            <Link to='/Spells'><button>Spells</button></Link>
           </nav>
         <main>
           <Routes>
@@ -24,6 +26,7 @@ function App() {
             <Route path='/CharacterDisplay' element={<CharacterDisplay />} />,
             <Route path='/CharacterUpdate' element={<CharacterUpdate />} />,
             <Route path='/AboutUs' element={<AboutUs />} />
+            <Route path='/Spells' element={<Spells />} />
           </Routes>
         </main>
       </div>
