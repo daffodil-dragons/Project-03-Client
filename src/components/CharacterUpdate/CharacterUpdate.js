@@ -4,7 +4,6 @@ import "./CharacterUpdate.css";
 import apiUrl from "../../apiUrl";
 
 function CharacterUpdate() {
-  const [page, setpage] = useState(1);
   const [data, setData] = useState({
     name: "",
     demographic: "",
@@ -21,16 +20,6 @@ function CharacterUpdate() {
     },
   });
   const [searchName, setSearchName] = useState("");
-
-  //buttons for going back and forward through menu
-  function goBackPage() {
-    if (page === 1) return;
-    setpage((page) => page - 1);
-  }
-  function goNextPage() {
-    if (page === 5) return;
-    setpage((page) => page + 1);
-  }
 
   //function to update data useState
   function updateData(event) {
@@ -81,7 +70,7 @@ function CharacterUpdate() {
     setSearchName(event.target.value);
   }
 
-  //function to post to the API
+  //function to update to the API
   function submit() {
     fetch(apiUrl + "/character/update/" + searchName, {
       method: "PUT",
@@ -147,15 +136,6 @@ function CharacterUpdate() {
       .catch((e) => console.log(e));
   }
 
-  // function verify() {
-  //     window.alert("Please confirm your deletion");
-  //     if (true) {
-  //          deleteChar()
-  //     } else {
-  //          console.log('aborted');
-  //     }
-  // }
-
   /*****************************
    *        MAIN RETURN         *
    *****************************/
@@ -175,13 +155,6 @@ function CharacterUpdate() {
           </button>
         </form>
       </div>
-      {/* Progress Bar here */}
-      {/* <div>
-        <progress max="5" value={page} />
-      </div> */}
-
-      {/* {page !== 1 && <button onClick={goBackPage}>Back</button>}
-      {page !== 5 && <button onClick={goNextPage}>Next</button>} */}
       <div className="statUpdates">
         <div className="sButton">
           {
@@ -191,9 +164,6 @@ function CharacterUpdate() {
           }
         </div>
         <div className="statContainer">
-          {/*Content Here */}
-          {/* {page === 1 && <OnboardingOne data={data} update={updateData} />} */}
-          {/* {page === 2 && <OnboardingTwo data={data} update={updateData} />} */}
           <div className="demoStats">
             {<OnboardingThree data={data} update={updateData} />}
             {<OnboardingFour data={data} update={updateData} />}
@@ -220,34 +190,6 @@ export default CharacterUpdate;
  *        COMPONENTS          *
  *****************************/
 
-//component for name
-function OnboardingOne({ data, update }) {
-  return (
-    <div>
-      <form>
-        Please enter your character's name:
-        <input type="text" id="name" value={data.name} onChange={update} />
-      </form>
-    </div>
-  );
-}
-
-//component for race
-function OnboardingTwo({ data, update }) {
-  return (
-    <div>
-      <form>
-        Please enter your character's race:
-        <input
-          type="text"
-          id="demographic"
-          value={data.demographic}
-          onChange={update}
-        />
-      </form>
-    </div>
-  );
-}
 //component for class
 function OnboardingThree({ data, update }) {
   return (
