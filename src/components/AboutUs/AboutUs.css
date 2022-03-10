@@ -1,0 +1,39 @@
+:root {
+    background-color: #30302B;
+}
+
+.teammates {
+    padding-top: 50px;
+}
+.member {
+    border-style: solid;
+    box-shadow: 10px 10px 5px lightblue;
+    margin-top: 37px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 2;
+    background-color: #30302B;
+}
+
+.person {
+    grid-row: 1;
+    justify-self: start;
+}
+.github {
+    grid-row: 2;
+    justify-self: start;
+    color: white;
+}
+
+.linkedIn {
+    grid-row: 2;
+    justify-self: end;
+    color: white;
+}
+
+
+
+
+
