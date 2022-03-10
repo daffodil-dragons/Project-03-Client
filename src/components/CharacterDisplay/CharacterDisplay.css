@@ -34,6 +34,7 @@ h1 {
 
 .main-container {
   background-color: white;
+  color: black;
   margin: 5px;
   padding: 10px;
   display: grid;
