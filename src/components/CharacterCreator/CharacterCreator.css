@@ -8,7 +8,7 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 100px 100px 100px 100px 100px 100px;
-        background-color: #30302B;
+        /* background-color: #30302B; */
     }
     
     .progress {
@@ -80,7 +80,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 100px 100px 100px 100px 100px;
-        background-color: #30302B;
+        /* background-color: #30302B; */
     }
     
     .progress {
@@ -149,13 +149,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 100px 100px 100px 100px;
-        background-image: url('https://wallpapercave.com/wp/wp4110703.jpg');
-        background-color: #cccccc;
-        height: 500px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
+
     }
     
     .progress {
