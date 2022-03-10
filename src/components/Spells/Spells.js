@@ -4,10 +4,30 @@ import apiUrl from "../../apiUrl";
 const Spells = () => {
   const [allSpells, setAllSpells] = useState([]);
   const [singleSpellData, setSingleSpellData] = useState({});
+  const [createSpellData, setCreateSpellData] = useState({
+    name: "",
+    level: 0,
+    description: "",
+    prepared: false,
+  });
   const [charName, setCharName] = useState("");
+  const [displayState, setDisplayState] = useState("");
 
   function handleChange(event) {
     setCharName(event.target.value);
+  }
+
+  function handleCreateChange(event) {
+    if (event.target.id === "name") {
+      setCreateSpellData({ ...createSpellData, name: event.target.value });
+    } else if (event.target.id === "level") {
+      setCreateSpellData({ ...createSpellData, level: event.target.value });
+    } else if (event.target.id === "description") {
+      setCreateSpellData({
+        ...createSpellData,
+        description: event.target.value,
+      });
+    }
   }
 
   function getAllSpells() {
@@ -15,6 +35,7 @@ const Spells = () => {
       .then((res) => res.json())
       .then((data) => setAllSpells(data.spells))
       .catch((e) => console.log(e));
+    changeDisplay("allSpells");
   }
 
   function getSingleSpellData(name) {
@@ -26,20 +47,69 @@ const Spells = () => {
 
   function addSpellToChar(event) {
     event.preventDefault();
-    fetch(`${apiUrl}/character/update/${charName}/spell/${singleSpellData.name}`, {
-      method: "PUT",
-    })
+    window.alert(`You added the spell ${singleSpellData.name} to ${charName}!`);
+    fetch(
+      `${apiUrl}/character/update/${charName}/spell/${singleSpellData.name}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then(() => setCharName(""))
       .catch((e) => console.log(e));
   }
 
+  function changeDisplay(id) {
+    if (id === "allSpells") {
+      setDisplayState("allSpells");
+    } else {
+      setDisplayState("createSpell");
+    }
+  }
+
+  function createSpell(event) {
+    event.preventDefault();
+
+    if (createSpellData.name !== "") {
+      window.alert(`You have created the spell: ${createSpellData.name}!`);
+      fetch(apiUrl + "/spells/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(createSpellData),
+      })
+        .then(() =>
+          setCreateSpellData({
+            name: "",
+            level: 0,
+            description: "",
+            prepared: false,
+          })
+        )
+        .catch((e) => console.log(e));
+    } else {
+      window.alert("You must enter a spell name!");
+    }
+  }
+
+  async function deleteSpell() {
+    window.alert(`You have deleted the spell: ${singleSpellData.name}!`);
+    await fetch(apiUrl + "/spells/delete/" + singleSpellData.name, {
+      method: "DELETE",
+    })
+      .then(() => setSingleSpellData({}))
+      .catch((e) => console.log(e));
+    getAllSpells();
+  }
+
   let allSpellsDisplay;
-  if (allSpells[0]) {
+  if (allSpells[0] && displayState === "allSpells") {
     allSpellsDisplay = allSpells.map((spell, index) => {
       return (
         <div key={index}>
-          <button onClick={() => getSingleSpellData(spell.name)}>
+          <button
+            className="btn btn-light btn-sm"
+            onClick={() => getSingleSpellData(spell.name)}
+          >
             {spell.name},{" "}
             {spell.level === 0 ? "cantrip" : spell.level + " level"}
           </button>
@@ -49,7 +119,7 @@ const Spells = () => {
   }
 
   let singleSpellDisplay;
-  if (singleSpellData.name) {
+  if (singleSpellData.name && displayState !== "createSpell") {
     singleSpellDisplay = (
       <div>
         <h3>{singleSpellData.name}</h3>
@@ -64,20 +134,76 @@ const Spells = () => {
           <input
             type="text"
             placeholder="character name"
+            value={charName}
             onChange={handleChange}
           />
-          <button onClick={addSpellToChar}>Add Spell</button>
+          <button className="btn btn-success btn-sm" onClick={addSpellToChar}>
+            Add Spell
+          </button>
+          <button className="btn btn-danger btn-sm" onClick={deleteSpell}>
+            Delete Spell
+          </button>
         </form>
       </div>
+    );
+  }
+
+  let createSpellDisplay;
+  if (displayState === "createSpell") {
+    createSpellDisplay = (
+      <form>
+        <label>Spell Name: </label>
+        <input
+          type="text"
+          id="name"
+          value={createSpellData.name}
+          placeholder="name"
+          onChange={handleCreateChange}
+        />
+        <label>Spell Level: </label>
+        <input
+          type="number"
+          id="level"
+          value={createSpellData.level}
+          placeholder="level"
+          onChange={handleCreateChange}
+        />
+        <label>Spell Description: </label>
+        <textarea
+          type="text"
+          id="description"
+          value={createSpellData.description}
+          placeholder="description"
+          onChange={handleCreateChange}
+        ></textarea>
+        <label>Prepared? </label>
+        <label>True: </label>
+        <input type="radio" id="preparedTrue" value={true} name="prepared" />
+        <label>False: </label>
+        <input type="radio" id="preparedFalse" value={false} name="prepared" />
+        <button className="btn btn-success btn-sm" onClick={createSpell}>
+          Create Spell
+        </button>
+      </form>
     );
   }
 
   return (
     <div>
       <h1>Spells Page</h1>
-      <button onClick={getAllSpells}>Get All Spells</button>
+      <button
+        className="btn btn-secondary"
+        id="createSpell"
+        onClick={() => changeDisplay("createSpell")}
+      >
+        Create A Spell
+      </button>
+      <button className="btn btn-primary" id="allSpells" onClick={getAllSpells}>
+        Get All Spells
+      </button>
       {allSpellsDisplay}
       {singleSpellDisplay}
+      {createSpellDisplay}
     </div>
   );
 };
