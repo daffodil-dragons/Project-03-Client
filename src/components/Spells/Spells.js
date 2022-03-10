@@ -1,4 +1,5 @@
 import { useState } from "react";
+import apiUrl from "../../apiUrl";
 
 const Spells = () => {
   const [allSpells, setAllSpells] = useState([]);
@@ -10,14 +11,14 @@ const Spells = () => {
   }
 
   function getAllSpells() {
-    fetch("http://localhost:4000/spells/")
+    fetch(apiUrl + "/spells/")
       .then((res) => res.json())
       .then((data) => setAllSpells(data.spells))
       .catch((e) => console.log(e));
   }
 
   function getSingleSpellData(name) {
-    fetch("http://localhost:4000/spells/name/" + name)
+    fetch(apiUrl + "/spells/name/" + name)
       .then((res) => res.json())
       .then((data) => setSingleSpellData(data.spell))
       .catch((e) => console.log(e));
@@ -25,7 +26,7 @@ const Spells = () => {
 
   function addSpellToChar(event) {
     event.preventDefault();
-    fetch(`http://localhost:4000/character/update/${charName}/spell/${singleSpellData.name}`, {
+    fetch(`${apiUrl}/character/update/${charName}/spell/${singleSpellData.name}`, {
       method: "PUT",
     })
       .then((res) => res.json())

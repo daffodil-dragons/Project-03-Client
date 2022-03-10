@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./CharacterUpdate.css";
+import apiUrl from "../../apiUrl";
 
 function CharacterUpdate() {
   const [page, setpage] = useState(1);
@@ -82,7 +83,7 @@ function CharacterUpdate() {
 
   //function to post to the API
   function submit() {
-    fetch("http://localhost:4000/character/update/" + searchName, {
+    fetch(apiUrl + "/character/update/" + searchName, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -110,7 +111,7 @@ function CharacterUpdate() {
 
   function findChar(event) {
     event.preventDefault();
-    fetch("http://localhost:4000/character/find/" + searchName)
+    fetch(apiUrl + "/character/find/" + searchName)
       .then((res) => res.json())
       .then((data) => {
         data.Character !== null
@@ -122,7 +123,7 @@ function CharacterUpdate() {
 
   function deleteChar() {
     window.alert(`You deleted the character: ${searchName}!`);
-    fetch("http://localhost:4000/character/delete/" + searchName, {
+    fetch(apiUrl + "/character/delete/" + searchName, {
       method: "DELETE",
     })
       .then(() =>

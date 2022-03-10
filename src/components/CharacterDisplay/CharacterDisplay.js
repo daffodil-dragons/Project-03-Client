@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./CharacterDisplay.css";
+import apiUrl from "../../apiUrl";
 
 const CharacterDisplay = () => {
   const [allChar, setAllChar] = useState([]);
@@ -7,14 +8,14 @@ const CharacterDisplay = () => {
   const [d20Num, setd20Num] = useState("");
 
   function getCharData(name) {
-    fetch("http://localhost:4000/character/find/" + name)
+    fetch(apiUrl + "/character/find/" + name)
       .then((res) => res.json())
       .then((data) => setCharData(data.Character))
       .catch((e) => console.log(e));
   }
 
   function getAllChar() {
-    fetch("http://localhost:4000/character/")
+    fetch(apiUrl + "/character/")
       .then((res) => res.json())
       .then((data) => setAllChar(data.Characters))
       .catch((e) => console.log(e));

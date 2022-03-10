@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./CharacterCreator.css";
+import apiUrl from "../../apiUrl";
 
 function CharacterCreator() {
   const [page, setpage] = useState(1);
@@ -82,7 +83,7 @@ function CharacterCreator() {
       setpage(1);
     }else{
     window.alert(`You have created the character: ${data.name}!`);
-    fetch("http://localhost:4000/character/create", {
+    fetch(apiUrl + "/character/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
