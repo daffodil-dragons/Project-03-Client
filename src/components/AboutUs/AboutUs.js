@@ -17,7 +17,7 @@ function AboutUs() {
 
     return (
         <div className="about">
-            <section>
+            <section className="teammates">
                 {teammates}
             </section>
         </div>

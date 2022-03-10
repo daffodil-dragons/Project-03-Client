@@ -164,7 +164,7 @@ function CharacterUpdate() {
           value={searchName}
           onChange={handleChange}
         />
-        <button onClick={findChar}>Find Character By Name</button>
+        <button className="btn btn-primary" onClick={findChar}>Find Character By Name</button>
       </form>
       </div>
       {/* Progress Bar here */}
@@ -176,7 +176,7 @@ function CharacterUpdate() {
       {page !== 5 && <button onClick={goNextPage}>Next</button>} */}
       <div className="statUpdates">
           <div className="sButton">{
-        <button type="submit" onClick={submit}>
+        <button type="submit" className="btn btn-success" onClick={submit}>
           Submit
         </button>
       }</div>
@@ -196,7 +196,7 @@ function CharacterUpdate() {
 
       <div className="delete">
         <h1>Delete Character</h1>
-        <button onClick={deleteChar}>Delete</button>
+        <button className="btn btn-danger" onClick={deleteChar}>Delete</button>
       </div>
     </div>
   );
