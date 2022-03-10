@@ -77,6 +77,10 @@ function CharacterCreator() {
 
   //function to post to the API
   function submit() {
+    if(data.name === ""){
+      window.alert("Your character must have a name!");
+      setpage(1);
+    }else{
     window.alert(`You have created the character: ${data.name}!`);
     fetch("http://localhost:4000/character/create", {
       method: "POST",
@@ -101,7 +105,7 @@ function CharacterCreator() {
         })
       )
       .then(() => setpage(1))
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e));}
   }
 
   /*****************************
