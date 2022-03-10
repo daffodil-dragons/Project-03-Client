@@ -1,6 +1,6 @@
 //dependencies
 import React from "react";
-import { Routes, Link, Route } from "react-router-dom";
+import { Routes, Link, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
 //components import
@@ -32,19 +32,29 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link" to='/CharacterCreator'>Character Creator</Link>
+                <Link className="nav-link" to="/CharacterCreator">
+                  Character Creator
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to='/CharacterDisplay'>View All Characters</Link>
+                <Link className="nav-link" to="/CharacterDisplay">
+                  View All Characters
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to='/CharacterUpdate'>Update Character</Link>
+                <Link className="nav-link" to="/CharacterUpdate">
+                  Update Character
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to='/Spells'>Spells</Link>
+                <Link className="nav-link" to="/Spells">
+                  Spells
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to='/AboutUs'>About Us!</Link>
+                <Link className="nav-link" to="/AboutUs">
+                  About Us!
+                </Link>
               </li>
             </ul>
           </div>
@@ -52,6 +62,7 @@ function App() {
       </nav>
       <main>
         <Routes>
+          <Route path="/" element={<Navigate to="/CharacterCreator" />} />,
           <Route path="/CharacterCreator" element={<CharacterCreator />} />,
           <Route path="/CharacterDisplay" element={<CharacterDisplay />} />,
           <Route path="/CharacterUpdate" element={<CharacterUpdate />} />,
