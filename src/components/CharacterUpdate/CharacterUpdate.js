@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import './CharacterUpdate.css';
+import "./CharacterUpdate.css";
 
 function CharacterUpdate() {
   const [page, setpage] = useState(1);
@@ -112,7 +112,11 @@ function CharacterUpdate() {
     event.preventDefault();
     fetch("http://localhost:4000/character/find/" + searchName)
       .then((res) => res.json())
-      .then((data) => setData(data.Character))
+      .then((data) => {
+        data.Character !== null
+          ? setData(data.Character)
+          : window.alert("No character found!");
+      })
       .catch((e) => console.log(e));
   }
 
@@ -156,16 +160,19 @@ function CharacterUpdate() {
    *****************************/
   return (
     <div className="App">
-      <div className="header"><h1>Update Character</h1>
-      <form>
-        <input
-          type="text"
-          placeholder="name"
-          value={searchName}
-          onChange={handleChange}
-        />
-        <button className="btn btn-primary" onClick={findChar}>Find Character By Name</button>
-      </form>
+      <div className="header">
+        <h1>Update Character</h1>
+        <form>
+          <input
+            type="text"
+            placeholder="name"
+            value={searchName}
+            onChange={handleChange}
+          />
+          <button className="btn btn-primary" onClick={findChar}>
+            Find Character By Name
+          </button>
+        </form>
       </div>
       {/* Progress Bar here */}
       {/* <div>
@@ -175,28 +182,32 @@ function CharacterUpdate() {
       {/* {page !== 1 && <button onClick={goBackPage}>Back</button>}
       {page !== 5 && <button onClick={goNextPage}>Next</button>} */}
       <div className="statUpdates">
-          <div className="sButton">{
-        <button type="submit" className="btn btn-success" onClick={submit}>
-          Submit
-        </button>
-      }</div>
-    <div className="statContainer">
-      {/*Content Here */}
-      {/* {page === 1 && <OnboardingOne data={data} update={updateData} />} */}
-      {/* {page === 2 && <OnboardingTwo data={data} update={updateData} />} */}
-      <div className="demoStats">
-        {<OnboardingThree data={data} update={updateData} />}
-        {<OnboardingFour data={data} update={updateData} />}
-      </div>
-      <div className="statStats">
-      {<OnboardingFive data={data} update={updateData} />}
-      </div>
-    </div>
+        <div className="sButton">
+          {
+            <button type="submit" className="btn btn-success" onClick={submit}>
+              Submit
+            </button>
+          }
+        </div>
+        <div className="statContainer">
+          {/*Content Here */}
+          {/* {page === 1 && <OnboardingOne data={data} update={updateData} />} */}
+          {/* {page === 2 && <OnboardingTwo data={data} update={updateData} />} */}
+          <div className="demoStats">
+            {<OnboardingThree data={data} update={updateData} />}
+            {<OnboardingFour data={data} update={updateData} />}
+          </div>
+          <div className="statStats">
+            {<OnboardingFive data={data} update={updateData} />}
+          </div>
+        </div>
       </div>
 
       <div className="delete">
         <h1>Delete Character</h1>
-        <button className="btn btn-danger" onClick={deleteChar}>Delete</button>
+        <button className="btn btn-danger" onClick={deleteChar}>
+          Delete
+        </button>
       </div>
     </div>
   );
@@ -264,71 +275,71 @@ function OnboardingFive({ data, update }) {
     <div>
       <form>
         <div className="title">Please enter your character's stats:</div>
-    <div className="statNames">
-        <div className="hp">
-          HP:{" "}
-          <input
-            type="number"
-            id="hp"
-            value={data.stats.hp}
-            onChange={update}
-          />
+        <div className="statNames">
+          <div className="hp">
+            HP:{" "}
+            <input
+              type="number"
+              id="hp"
+              value={data.stats.hp}
+              onChange={update}
+            />
+          </div>
+          <div className="strength">
+            Strength:
+            <input
+              type="number"
+              id="strength"
+              value={data.stats.strength}
+              onChange={update}
+            />
+          </div>
+          <div className="dexterity">
+            Dexterity:
+            <input
+              type="number"
+              id="dexterity"
+              value={data.stats.dexterity}
+              onChange={update}
+            />
+          </div>
+          <div className="constitution">
+            Constitution:{" "}
+            <input
+              type="number"
+              id="constitution"
+              value={data.stats.constitution}
+              onChange={update}
+            />
+          </div>
+          <div className="intelligence">
+            Intellgience:{" "}
+            <input
+              type="number"
+              id="intelligence"
+              value={data.stats.intelligence}
+              onChange={update}
+            />
+          </div>
+          <div className="wisdom">
+            Wisdom:{" "}
+            <input
+              type="number"
+              id="wisdom"
+              value={data.stats.wisdom}
+              onChange={update}
+            />
+          </div>
+          <div className="charisma">
+            Charisma:{" "}
+            <input
+              type="number"
+              id="charisma"
+              value={data.stats.charisma}
+              onChange={update}
+            />
+          </div>
         </div>
-        <div className="strength">
-          Strength:
-          <input
-            type="number"
-            id="strength"
-            value={data.stats.strength}
-            onChange={update}
-          />
-        </div>
-        <div className="dexterity">
-          Dexterity:
-          <input
-            type="number"
-            id="dexterity"
-            value={data.stats.dexterity}
-            onChange={update}
-          />
-        </div>
-        <div className="constitution">
-          Constitution:{" "}
-          <input
-            type="number"
-            id="constitution"
-            value={data.stats.constitution}
-            onChange={update}
-          />
-        </div>
-        <div className="intelligence">
-          Intellgience:{" "}
-          <input
-            type="number"
-            id="intelligence"
-            value={data.stats.intelligence}
-            onChange={update}
-          />
-        </div>
-        <div className="wisdom">
-          Wisdom:{" "}
-          <input
-            type="number"
-            id="wisdom"
-            value={data.stats.wisdom}
-            onChange={update}
-          />
-        </div>
-        <div className="charisma">
-          Charisma:{" "}
-          <input
-            type="number"
-            id="charisma"
-            value={data.stats.charisma}
-            onChange={update}
-          />
-        </div>
-    </div>
       </form>
     </div>
   );
