@@ -28,6 +28,28 @@ h1 {
   margin-right: 5px;
 }
 
+.d20 {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d20-btn {
+  margin-right: 5px;
+}
+
+.number {
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  height: 35px;
+  width: 35px;
+}
+
 .border {
   border: 1px solid black;
 }
@@ -101,7 +123,7 @@ h1 {
 /* TABLET DISPLAY */
 @media (min-width: 768px) {
   .main-container {
-    margin: 25px;
+    margin: 5px 25px;
     grid-template-rows: 1fr 1fr;
   }
 
@@ -140,7 +162,7 @@ h1 {
 /* DESKTOP DISPLAY */
 @media (min-width: 992px) {
   .main-container {
-    margin: 25px 100px;
+    margin: 5px 100px;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(8, auto);
   }
