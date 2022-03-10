@@ -1,5 +1,6 @@
 import { useState } from "react";
 import apiUrl from "../../apiUrl";
+import "./Spells.css";
 
 const Spells = () => {
   const [allSpells, setAllSpells] = useState([]);
@@ -105,7 +106,7 @@ const Spells = () => {
   if (allSpells[0] && displayState === "allSpells") {
     allSpellsDisplay = allSpells.map((spell, index) => {
       return (
-        <div key={index}>
+        <div className="all-spell-btns" key={index}>
           <button
             className="btn btn-light btn-sm"
             onClick={() => getSingleSpellData(spell.name)}
@@ -151,7 +152,7 @@ const Spells = () => {
   let createSpellDisplay;
   if (displayState === "createSpell") {
     createSpellDisplay = (
-      <form>
+      <form className="create-spell">
         <label>Spell Name: </label>
         <input
           type="text"
@@ -160,6 +161,7 @@ const Spells = () => {
           placeholder="name"
           onChange={handleCreateChange}
         />
+        <br />
         <label>Spell Level: </label>
         <input
           type="number"
@@ -168,6 +170,7 @@ const Spells = () => {
           placeholder="level"
           onChange={handleCreateChange}
         />
+        <br />
         <label>Spell Description: </label>
         <textarea
           type="text"
@@ -176,11 +179,12 @@ const Spells = () => {
           placeholder="description"
           onChange={handleCreateChange}
         ></textarea>
-        <label>Prepared? </label>
+        <br />
+        {/* <label>Prepared? </label>
         <label>True: </label>
         <input type="radio" id="preparedTrue" value={true} name="prepared" />
         <label>False: </label>
-        <input type="radio" id="preparedFalse" value={false} name="prepared" />
+        <input type="radio" id="preparedFalse" value={false} name="prepared" /> */}
         <button className="btn btn-success btn-sm" onClick={createSpell}>
           Create Spell
         </button>
@@ -189,7 +193,7 @@ const Spells = () => {
   }
 
   return (
-    <div>
+    <div className="wrapper">
       <h1>Spells Page</h1>
       <button
         className="btn btn-secondary"

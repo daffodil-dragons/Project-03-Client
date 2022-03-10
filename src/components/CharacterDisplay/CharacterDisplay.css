@@ -120,6 +120,16 @@ h1 {
   align-self: center;
 }
 
+.spells {
+  grid-column: 1 / 3;
+}
+
+.accordion-body {
+  max-height: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 /* TABLET DISPLAY */
 @media (min-width: 768px) {
   .main-container {
@@ -156,6 +166,10 @@ h1 {
     grid-row: 2 / 3;
     grid-template-columns: repeat(6, 1fr);
     grid-row: 1fr;
+  }
+
+  .spells {
+    grid-column: 1 / 2;
   }
 }
 
@@ -206,5 +220,10 @@ h1 {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
     gap: 10px;
+  }
+
+  .spells {
+    grid-column: 2 / 4;
+    grid-row: 5 / 7;
   }
 }
