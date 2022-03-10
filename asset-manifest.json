@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Project-03-Client/static/css/main.f683a611.css",
+    "main.js": "/Project-03-Client/static/js/main.47121eed.js",
+    "index.html": "/Project-03-Client/index.html",
+    "main.f683a611.css.map": "/Project-03-Client/static/css/main.f683a611.css.map",
+    "main.47121eed.js.map": "/Project-03-Client/static/js/main.47121eed.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f683a611.css",
+    "static/js/main.47121eed.js"
+  ]
+}
