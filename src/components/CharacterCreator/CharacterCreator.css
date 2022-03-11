@@ -67,7 +67,9 @@
     
     .hp, .strength, .dexterity, .constitution, .intelligence, .wisdom, .charisma {
         text-align: center;
-    }    
+    }
+    
+
 }
 
 /* TABLET DISPLAY */

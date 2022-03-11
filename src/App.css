@@ -8,3 +8,7 @@ main {
   background-size: cover;
   position: relative;
 }
+
+.modal-body, .modal-title {
+  color: black;
+}

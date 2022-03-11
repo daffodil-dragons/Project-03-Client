@@ -48,7 +48,6 @@ const Spells = () => {
 
   function addSpellToChar(event) {
     event.preventDefault();
-    window.alert(`You added the spell ${singleSpellData.name} to ${charName}!`);
     fetch(
       `${apiUrl}/character/update/${charName}/spell/${singleSpellData.name}`,
       {
@@ -56,7 +55,6 @@ const Spells = () => {
       }
     )
       .then((res) => res.json())
-      .then(() => setCharName(""))
       .catch((e) => console.log(e));
   }
 
@@ -72,33 +70,18 @@ const Spells = () => {
     event.preventDefault();
 
     if (createSpellData.name !== "") {
-      window.alert(`You have created the spell: ${createSpellData.name}!`);
       fetch(apiUrl + "/spells/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(createSpellData),
-      })
-        .then(() =>
-          setCreateSpellData({
-            name: "",
-            level: 0,
-            description: "",
-            prepared: false,
-          })
-        )
-        .catch((e) => console.log(e));
-    } else {
-      window.alert("You must enter a spell name!");
+      }).catch((e) => console.log(e));
     }
   }
 
   async function deleteSpell() {
-    window.alert(`You have deleted the spell: ${singleSpellData.name}!`);
     await fetch(apiUrl + "/spells/delete/" + singleSpellData.name, {
       method: "DELETE",
-    })
-      .then(() => setSingleSpellData({}))
-      .catch((e) => console.log(e));
+    }).catch((e) => console.log(e));
     getAllSpells();
   }
 
@@ -138,10 +121,24 @@ const Spells = () => {
             value={charName}
             onChange={handleChange}
           />
-          <button className="btn btn-success btn-sm" onClick={addSpellToChar}>
+          <button
+            className="btn btn-success btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target={
+              charName !== ""
+                ? "#successSpellToCharModal"
+                : "#warningSpellToCharModal"
+            }
+            onClick={addSpellToChar}
+          >
             Add Spell
           </button>
-          <button className="btn btn-danger btn-sm" onClick={deleteSpell}>
+          <button
+            className="btn btn-danger btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#successDeleteSpellModal"
+            onClick={deleteSpell}
+          >
             Delete Spell
           </button>
         </form>
@@ -167,7 +164,7 @@ const Spells = () => {
           type="number"
           id="level"
           value={createSpellData.level}
-          placeholder="level"
+          placeholder="0"
           onChange={handleCreateChange}
         />
         <br />
@@ -185,7 +182,16 @@ const Spells = () => {
         <input type="radio" id="preparedTrue" value={true} name="prepared" />
         <label>False: </label>
         <input type="radio" id="preparedFalse" value={false} name="prepared" /> */}
-        <button className="btn btn-success btn-sm" onClick={createSpell}>
+        <button
+          className="btn btn-success btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target={
+            createSpellData.name !== ""
+              ? "#successCreateSpellModal"
+              : "#warningCreateSpellModal"
+          }
+          onClick={createSpell}
+        >
           Create Spell
         </button>
       </form>
@@ -208,6 +214,201 @@ const Spells = () => {
       {allSpellsDisplay}
       {singleSpellDisplay}
       {createSpellDisplay}
+
+      {/* WARNING MODAL 01*/}
+      <div
+        className="modal fade"
+        id="warningSpellToCharModal"
+        tabIndex="-1"
+        aria-labelledby="warningModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="warningModalLabel">
+                Warning!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">Please enter a name!</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* WARNING MODAL 02*/}
+      <div
+        className="modal fade"
+        id="warningCreateSpellModal"
+        tabIndex="-1"
+        aria-labelledby="warningModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="warningModalLabel">
+                Warning!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">You must enter a spell name!</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SUCCESS MODAL 01*/}
+      <div
+        className="modal fade"
+        id="successSpellToCharModal"
+        tabIndex="-1"
+        aria-labelledby="successModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="successModalLabel">
+                Success!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => setCharName("")}
+              ></button>
+            </div>
+            <div className="modal-body">{`You have added ${singleSpellData.name} to ${charName}!`}</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-success"
+                data-bs-dismiss="modal"
+                onClick={() => setCharName("")}
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SUCCESS MODAL 02*/}
+      <div
+        className="modal fade"
+        id="successCreateSpellModal"
+        tabIndex="-1"
+        aria-labelledby="successModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="successModalLabel">
+                Success!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() =>
+                  setCreateSpellData({
+                    name: "",
+                    level: 0,
+                    description: "",
+                    prepared: false,
+                  })
+                }
+              ></button>
+            </div>
+            <div className="modal-body">{`You have created the spell: ${createSpellData.name}!`}</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-success"
+                data-bs-dismiss="modal"
+                onClick={() =>
+                  setCreateSpellData({
+                    name: "",
+                    level: 0,
+                    description: "",
+                    prepared: false,
+                  })
+                }
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SUCCESS MODAL 03*/}
+      <div
+        className="modal fade"
+        id="successDeleteSpellModal"
+        tabIndex="-1"
+        aria-labelledby="successModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="successModalLabel">
+                Deleted!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => setSingleSpellData({})}
+              ></button>
+            </div>
+            <div className="modal-body">{`You have deleted the spell: ${singleSpellData.name}!`}</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={() => setSingleSpellData({})}
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
