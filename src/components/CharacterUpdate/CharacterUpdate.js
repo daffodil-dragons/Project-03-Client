@@ -137,7 +137,6 @@ function CharacterUpdate() {
           },
         })
       )
-      .then(() => setSearchName(""))
       .catch((e) => console.log(e));
   }
 
@@ -240,6 +239,7 @@ function CharacterUpdate() {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                onClick={() => setSearchName("")}
               ></button>
             </div>
             <div className="modal-body">{`You deleted the character: ${searchName}!`}</div>
@@ -248,6 +248,7 @@ function CharacterUpdate() {
                 type="button"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
+                onClick={() => setSearchName("")}
               >
                 Ok
               </button>
