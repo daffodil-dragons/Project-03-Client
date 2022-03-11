@@ -1,5 +1,5 @@
-import React from "react";
 import { useState } from "react";
+import * as bootstrap from "bootstrap";
 import "./CharacterUpdate.css";
 import apiUrl from "../../apiUrl";
 
@@ -98,20 +98,25 @@ function CharacterUpdate() {
       .catch((e) => console.log(e));
   }
 
+  function triggerModal() {
+    let myModal = new bootstrap.Modal(document.getElementById("warningModal"));
+    myModal.toggle();
+  }
+
   function findChar(event) {
     event.preventDefault();
-    fetch(apiUrl + "/character/find/" + searchName)
-      .then((res) => res.json())
-      .then((data) => {
-        data.Character !== null
-          ? setData(data.Character)
-          : window.alert("No character found!");
-      })
-      .catch((e) => console.log(e));
+
+    if (searchName !== "") {
+      fetch(apiUrl + "/character/find/" + searchName)
+        .then((res) => res.json())
+        .then((data) => {
+          data.Character !== null ? setData(data.Character) : triggerModal();
+        })
+        .catch((e) => console.log(e));
+    }
   }
 
   function deleteChar() {
-    window.alert(`You deleted the character: ${searchName}!`);
     fetch(apiUrl + "/character/delete/" + searchName, {
       method: "DELETE",
     })
@@ -150,7 +155,12 @@ function CharacterUpdate() {
             value={searchName}
             onChange={handleChange}
           />
-          <button className="btn btn-primary" onClick={findChar}>
+          <button
+            className="btn btn-primary"
+            // data-bs-toggle="modal"
+            // data-bs-target={data.name === null ? "#warningModal" : ""}
+            onClick={findChar}
+          >
             Find Character By Name
           </button>
         </form>
@@ -174,9 +184,86 @@ function CharacterUpdate() {
         </div>
       </div>
 
+      {/* WARNING MODAL */}
+      <div
+        className="modal fade"
+        id="warningModal"
+        tabIndex="-1"
+        aria-labelledby="warningModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="warningModalLabel">
+                Warning!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              Unable to find that character's name!
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SUCCESS MODAL */}
+      <div
+        className="modal fade"
+        id="successModal"
+        tabIndex="-1"
+        aria-labelledby="successModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="successModalLabel">
+                Deleted!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">{`You deleted the character: ${searchName}!`}</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="delete">
         <h1>Delete Character</h1>
-        <button className="btn btn-danger" onClick={deleteChar}>
+        <button
+          className="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#successModal"
+          onClick={deleteChar}
+        >
           Delete
         </button>
       </div>
