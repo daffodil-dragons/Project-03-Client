@@ -78,35 +78,17 @@ function CharacterCreator() {
 
   //function to post to the API
   function submit() {
-    if(data.name === ""){
-      window.alert("Your character must have a name!");
+    if (data.name === "") {
       setpage(1);
-    }else{
-    window.alert(`You have created the character: ${data.name}!`);
-    fetch(apiUrl + "/character/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then(() =>
-        setData({
-          name: "",
-          demographic: "",
-          class: "",
-          level: "",
-          stats: {
-            hp: 0,
-            strength: 0,
-            dexterity: 0,
-            constitution: 0,
-            intelligence: 0,
-            wisdom: 0,
-            charisma: 0,
-          },
-        })
-      )
-      .then(() => setpage(1))
-      .catch((e) => console.log(e));}
+    } else {
+      fetch(apiUrl + "/character/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then(() => setpage(1))
+        .catch((e) => console.log(e));
+    }
   }
 
   /*****************************
@@ -115,18 +97,144 @@ function CharacterCreator() {
   return (
     <div className="cc">
       {/* Progress Bar here */}
-      <div className="progress" style={{height: 50}}>
-        <div className="progress-bar bg-info" role="progressbar" style={{width: (`${page}` * 20) + '%'}} aria-valuenow={`${page}`} aria-valuemin="0" aria-valuemax="5"></div>
-      </div> 
+      <div className="progress" style={{ height: 50 }}>
+        <div
+          className="progress-bar bg-info"
+          role="progressbar"
+          style={{ width: `${page}` * 20 + "%" }}
+          aria-valuenow={`${page}`}
+          aria-valuemin="0"
+          aria-valuemax="5"
+        ></div>
+      </div>
 
       {/*Buttons here*/}
-      {page !== 1 && <button id="back" className="btn btn-primary" onClick={goBackPage}>Back</button>}
-      {page !== 5 && <button id="next" className="btn btn-primary" onClick={goNextPage}>Next</button>}
+      {page !== 1 && (
+        <button id="back" className="btn btn-primary" onClick={goBackPage}>
+          Back
+        </button>
+      )}
+      {page !== 5 && (
+        <button id="next" className="btn btn-primary" onClick={goNextPage}>
+          Next
+        </button>
+      )}
       {page === 5 && (
-        <button id="submit" type="submit" className="btn btn-success" onClick={submit}>
+        <button
+          id="submit"
+          type="submit"
+          className="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target={data.name === "" ? "#warningModal" : "#successModal"}
+          onClick={submit}
+        >
           Submit
         </button>
       )}
+
+      {/* WARNING MODAL */}
+      <div
+        className="modal fade"
+        id="warningModal"
+        tabIndex="-1"
+        aria-labelledby="warningModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="warningModalLabel">
+                Warning!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">Your character needs a name!</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SUCCESS MODAL */}
+      <div
+        className="modal fade"
+        id="successModal"
+        tabIndex="-1"
+        aria-labelledby="successModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="successModalLabel">
+                Success!
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() =>
+                  setData({
+                    name: "",
+                    demographic: "",
+                    class: "",
+                    level: "",
+                    stats: {
+                      hp: 0,
+                      strength: 0,
+                      dexterity: 0,
+                      constitution: 0,
+                      intelligence: 0,
+                      wisdom: 0,
+                      charisma: 0,
+                    },
+                  })
+                }
+              ></button>
+            </div>
+            <div className="modal-body">{`You have created the character: ${data.name}!`}</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-success"
+                data-bs-dismiss="modal"
+                onClick={() =>
+                  setData({
+                    name: "",
+                    demographic: "",
+                    class: "",
+                    level: "",
+                    stats: {
+                      hp: 0,
+                      strength: 0,
+                      dexterity: 0,
+                      constitution: 0,
+                      intelligence: 0,
+                      wisdom: 0,
+                      charisma: 0,
+                    },
+                  })
+                }
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/*Content Here */}
       <section id="main">
